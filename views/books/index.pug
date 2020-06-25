@@ -1,0 +1,42 @@
+extends layout.pug
+
+block content 
+    h1= title
+    .main
+     p
+      a.button(href='/books/new') Create New Book
+     form(action='/search', method="post")
+        input.searchInput(type="text" name="search" placeholder="Search.." required)
+        input(type="submit" value="Search")
+
+    if books.length === 0
+      .errorNotFound
+        h2 No results found
+        p Please try again!
+    else  
+     table.table
+      thead
+        tr
+            th Title
+            th Author
+            th Genre
+            th Year
+      tbody
+       each book in books
+        tr
+            td
+                a(href='/books/' + book.id)= book.title
+            td= book.author 
+            td= book.genre
+            td= book.year
+
+    .pagination
+     ul  
+      - let n = 1;
+      while n < btn + 1
+       - let active = page == n ? 'active' : ''
+        li
+          if (query)
+            a.button(href=`?page=${n}&query=${query}` class=`${active}`)= n++
+          else 
+            a.button(href=`?page=${n}` class=`${active}`)= n++

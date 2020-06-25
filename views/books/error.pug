@@ -1,0 +1,9 @@
+extends layout.pug
+
+block content
+    .errorNotFound
+        h1= title
+        p.notFound= err.status
+        p.notFound Sorry! There was an unexpected error on the server.
+        br
+        a.button(href='/books') Home

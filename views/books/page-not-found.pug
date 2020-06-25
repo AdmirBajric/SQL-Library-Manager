@@ -1,0 +1,9 @@
+extends layout.pug
+
+block content 
+    .errorNotFound
+        h1 Page Not Found
+        p.notFound= err.status
+        p.notFound Sorry! We couldn't find the page you were looking for.
+        br
+        a.button(href='/books') Home
