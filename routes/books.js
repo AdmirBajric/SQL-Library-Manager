@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Books = require("../models").Book;
 
+/* Handler function to wrap each route. */
 function asyncHandler(cb) {
   return async (req, res, next) => {
     try {
@@ -11,7 +12,7 @@ function asyncHandler(cb) {
     }
   };
 }
-
+/* Get all books listing. */
 router.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -33,14 +34,14 @@ router.get(
     res.render("books/index", { books, page, btn, title: "Books" });
   })
 );
-
+/* Create a new book form. */
 router.get(
   "/new",
   asyncHandler(async (req, res) => {
     res.render("books/new-book", { book: {}, title: "New Book" });
   })
 );
-
+/* Post create new book. */
 router.post(
   "/new",
   asyncHandler(async (req, res) => {
@@ -62,7 +63,7 @@ router.post(
     }
   })
 );
-
+/* Get edit book form. */
 router.get(
   "/:id",
   asyncHandler(async (req, res) => {
@@ -74,7 +75,7 @@ router.get(
     }
   })
 );
-
+/* Post update book. */
 router.post(
   "/:id",
   asyncHandler(async (req, res) => {
@@ -102,7 +103,7 @@ router.post(
     }
   })
 );
-
+/* Post delete book. */
 router.post(
   "/:id/delete",
   asyncHandler(async (req, res) => {

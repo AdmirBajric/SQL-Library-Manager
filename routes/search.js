@@ -5,6 +5,7 @@ const Books = require("../models").Book;
 const db = require("../models");
 const { Op } = db.Sequelize;
 
+/* Handler function to wrap each route. */
 function asyncHandler(cb) {
   return async (req, res, next) => {
     try {
@@ -14,7 +15,7 @@ function asyncHandler(cb) {
     }
   };
 }
-
+/* Get book search listing. */
 router.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -61,7 +62,7 @@ router.get(
     }
   })
 );
-
+/* Post for search books listing. */
 router.post(
   "/",
   asyncHandler(async (req, res) => {
