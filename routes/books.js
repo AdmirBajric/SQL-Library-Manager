@@ -12,6 +12,7 @@ function asyncHandler(cb) {
     }
   };
 }
+
 /* Get all books listing. */
 router.get(
   "/",
@@ -34,6 +35,7 @@ router.get(
     res.render("books/index", { books, page, btn, title: "Books" });
   })
 );
+
 /* Create a new book form. */
 router.get(
   "/new",
@@ -41,6 +43,7 @@ router.get(
     res.render("books/new-book", { book: {}, title: "New Book" });
   })
 );
+
 /* Post create new book. */
 router.post(
   "/new",
@@ -65,6 +68,7 @@ router.post(
     }
   })
 );
+
 /* Get edit book form. */
 router.get(
   "/:id",
@@ -79,6 +83,7 @@ router.get(
     }
   })
 );
+
 /* Post update book. */
 router.post(
   "/:id",
@@ -111,6 +116,7 @@ router.post(
     }
   })
 );
+
 /* Post delete book. */
 router.post(
   "/:id/delete",
