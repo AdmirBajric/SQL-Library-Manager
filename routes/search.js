@@ -15,6 +15,7 @@ function asyncHandler(cb) {
     }
   };
 }
+
 /* Get book search listing. */
 router.get(
   "/",
@@ -64,6 +65,7 @@ router.get(
     }
   })
 );
+
 /* Post for search books listing. */
 router.post(
   "/",
