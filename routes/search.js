@@ -58,7 +58,9 @@ router.get(
       res.render("books/index", { books, query, page, btn, title: "Books" });
     } catch (error) {
       console.log(error);
-      res.render("books/error");
+      const err = new Error();
+      err.status = 500;
+      throw err;
     }
   })
 );
@@ -116,7 +118,9 @@ router.post(
       }
     } catch (error) {
       console.log(error);
-      res.render("books/error");
+      const err = new Error();
+      err.status = 500;
+      throw err;
     }
   })
 );

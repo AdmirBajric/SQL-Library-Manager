@@ -58,7 +58,9 @@ router.post(
           title: "New Book",
         });
       } else {
-        res.render("books/error");
+        const err = new Error();
+        err.status = 500;
+        throw err;
       }
     }
   })
@@ -71,7 +73,9 @@ router.get(
     if (book) {
       res.render("books/update-book", { book, title: "Update Book" });
     } else {
-      res.render("books/error");
+      const err = new Error();
+      err.status = 500;
+      throw err;
     }
   })
 );
@@ -86,7 +90,9 @@ router.post(
         await book.update(req.body);
         res.redirect("/books");
       } else {
-        res.render("books/error");
+        const err = new Error();
+        err.status = 500;
+        throw err;
       }
     } catch (error) {
       if (error.name === "SequelizeValidationError") {
@@ -98,7 +104,9 @@ router.post(
           title: "New Book",
         });
       } else {
-        throw error;
+        const err = new Error();
+        err.status = 500;
+        throw err;
       }
     }
   })
@@ -112,7 +120,9 @@ router.post(
       await book.destroy();
       res.redirect("/books");
     } else {
-      res.render("books/error");
+      const err = new Error();
+      err.status = 500;
+      throw err;
     }
   })
 );
